@@ -1,0 +1,11 @@
+/Users/edgarspuce/Projects/Homework2/Task3/bin/Debug/netcoreapp2.1/Task3.deps.json
+/Users/edgarspuce/Projects/Homework2/Task3/bin/Debug/netcoreapp2.1/Task3.runtimeconfig.json
+/Users/edgarspuce/Projects/Homework2/Task3/bin/Debug/netcoreapp2.1/Task3.runtimeconfig.dev.json
+/Users/edgarspuce/Projects/Homework2/Task3/bin/Debug/netcoreapp2.1/Task3.dll
+/Users/edgarspuce/Projects/Homework2/Task3/bin/Debug/netcoreapp2.1/Task3.pdb
+/Users/edgarspuce/Projects/Homework2/Task3/obj/Debug/netcoreapp2.1/Task3.csproj.CoreCompileInputs.cache
+/Users/edgarspuce/Projects/Homework2/Task3/obj/Debug/netcoreapp2.1/Task3.AssemblyInfoInputs.cache
+/Users/edgarspuce/Projects/Homework2/Task3/obj/Debug/netcoreapp2.1/Task3.AssemblyInfo.cs
+/Users/edgarspuce/Projects/Homework2/Task3/obj/Debug/netcoreapp2.1/Task3.dll
+/Users/edgarspuce/Projects/Homework2/Task3/obj/Debug/netcoreapp2.1/Task3.pdb
+/Users/edgarspuce/Projects/Homework2/Task3/obj/Debug/netcoreapp2.1/Task3.csprojAssemblyReference.cache
