@@ -105,10 +105,16 @@ namespace LINQ
         private void ValueFilter_Click(object sender, EventArgs e)
         {
             var employeeList = GetEmployeeList();
-            SetDataIntoGrid(employeeList.Where(
-                x => x.Name.ToLower().Distinct().ToArray().Length < x.Name.ToLower().Length
-                && x.Surname.ToLower().Distinct().ToArray().Length < x.Surname.ToLower().Length
-                && x.FacultyName.ToLower().Distinct().ToArray().Length < x.FacultyName.ToLower().Length).OrderBy(x => x.Name).ToList());
+           // SetDataIntoGrid(employeeList.Where(
+            //    x => x.Name.ToLower().Distinct().ToArray().Length < x.Name.ToLower().Length
+             //   && x.Surname.ToLower().Distinct().ToArray().Length < x.Surname.ToLower().Length
+             //   && x.FacultyName.ToLower().Distinct().ToArray().Length < x.FacultyName.ToLower().Length).OrderBy(x => x.Name).ToList());
+             
+              SetDataIntoGrid(employeeList.Where(
+                x => (
+                x.Name.ToLower().ToCharArray()
+                .Intersect(x.Surname.ToLower().ToCharArray()
+                .Intersect(x.FacultyName.ToLower().ToCharArray()))).Count() > 0).ToList());
 
         }
 
