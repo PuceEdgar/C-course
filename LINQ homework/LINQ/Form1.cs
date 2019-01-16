@@ -114,7 +114,7 @@ namespace LINQ
                 x => (
                 x.Name.ToLower().ToCharArray()
                 .Intersect(x.Surname.ToLower().ToCharArray()
-                .Intersect(x.FacultyName.ToLower().ToCharArray()))).Count() > 0).ToList());
+                .Intersect(x.FacultyName.ToLower().ToCharArray()))).Count() > 1).ToList());
 
         }
 
