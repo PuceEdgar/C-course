@@ -6,6 +6,9 @@ namespace RegistrationForm
 {
     public partial class Form1 : Form
     {
+
+        private const string _nameSurnamePattern = "^(?<firstchar>(?=[A-Za-z]))((?<alphachars>[A-Za-z])|(?<specialchars>[A-Za-z]['-](?=[A-Za-z]))|(?<spaces> (?=[A-Za-z])))*$";
+        private const string _mailPattern = "([a-zA-Z]+)[.]?([a-zA-Z]+)[@]([a-zA-Z]+)[.]([a-zA-z]+)";
         public Form1()
         {
             InitializeComponent();
@@ -13,26 +16,19 @@ namespace RegistrationForm
 
         private void NameBox_Leave(object sender, System.EventArgs e)
         {
-
-            var regex = "^(?<firstchar>(?=[A-Za-z]))((?<alphachars>[A-Za-z])|(?<specialchars>[A-Za-z]['-](?=[A-Za-z]))|(?<spaces> (?=[A-Za-z])))*$";
-            if (NameBox.Text.Length <= 0)
+            if (NameBox.Text.Length == 0)
             {
                 NamewarningLabel.Visible = true;
-
-                return;
             }
 
-            else if (!Regex.Match(NameBox.Text, regex).Success)
+            else if (!Regex.Match(NameBox.Text, _nameSurnamePattern).Success)
             {
                 NamewarningLabel.Visible = true;
-
-                return;
             }
 
             else
             {
                 NamewarningLabel.Visible = false;
-
             }
 
             if (NameBox.Text != "" && SurnameBox.Text != "")
@@ -44,19 +40,14 @@ namespace RegistrationForm
 
         private void SurnameBox_Leave(object sender, System.EventArgs e)
         {
-            var regex = "^(?<firstchar>(?=[A-Za-z]))((?<alphachars>[A-Za-z])|(?<specialchars>[A-Za-z]['-](?=[A-Za-z]))|(?<spaces> (?=[A-Za-z])))*$";
-            if (SurnameBox.Text.Length <= 0)
+            if (SurnameBox.Text.Length == 0)
             {
                 SurnamewarningLabel.Show();
-
-                return;
             }
 
-            else if (!Regex.Match(SurnameBox.Text, regex).Success)
+            else if (!Regex.Match(SurnameBox.Text, _nameSurnamePattern).Success)
             {
                 SurnamewarningLabel.Show();
-
-                return;
             }
 
             else
@@ -78,8 +69,6 @@ namespace RegistrationForm
             DateTime inputDate;
             DateTime now = DateTime.Today;
 
-
-
             if (DateTime.TryParse(input, out inputDate))
             {
                 int result = DateTime.Compare(inputDate, now);
@@ -90,12 +79,10 @@ namespace RegistrationForm
                 }
                 BirthdaywarningLabel.Hide();
 
-
                 String bdayPart = inputDate.ToString("dd/MM/yyyy").Replace(".", "");
                 bdayPart = bdayPart.Remove(4, 2);
                 SSNBox.Text = bdayPart + "-";
                 SSNBox.Focus();
-
             }
 
             else
@@ -106,8 +93,7 @@ namespace RegistrationForm
 
         private void PasswordBox_Leave(object sender, EventArgs e)
         {
-
-            bool validPass = validatePassword(PasswordBox.Text);
+            bool validPass = ValidatePassword(PasswordBox.Text);
 
             if (PasswordBox.Text.Length < 5)
             {
@@ -126,8 +112,6 @@ namespace RegistrationForm
                 {
                     PassWarningLabel.Text = "Password didn't match criteria!";
                     PassWarningLabel.Show();
-
-                    return;
                 }
             }
 
@@ -144,10 +128,7 @@ namespace RegistrationForm
 
             if (original != repeat)
             {
-
                 PassRepeatWarningLabel.Show();
-
-                return;
             }
 
             else
@@ -156,9 +137,9 @@ namespace RegistrationForm
             }
         }
 
-        static bool validatePassword(String password)
+        static bool ValidatePassword(String password)
         {
-            bool isValid = false;
+            bool isValid;
 
             if (password.Length >= 5)
             {
@@ -202,7 +183,7 @@ namespace RegistrationForm
 
         private void EmailBox_Leave(object sender, EventArgs e)
         {
-            bool validMail = validateMail(EmailBox.Text);
+            bool validMail = ValidateMail(EmailBox.Text);
 
             if (validMail)
             {
@@ -212,23 +193,19 @@ namespace RegistrationForm
             else
             {
                 EmailWarningLabel.Show();
-
-                return;
             }
         }
 
-        static bool validateMail(String mail)
+        static bool ValidateMail(String mail)
         {
-            bool isValid = false;
-
-            string regex = "([a-zA-Z]+)[.]?([a-zA-Z]+)[@]([a-zA-Z]+)[.]([a-zA-z]+)";
+            bool isValid;
 
             if (mail.Length == 0)
             {
                 isValid = false;
             }
 
-            else if (!Regex.Match(mail, regex).Success)
+            else if (!Regex.Match(mail, _mailPattern).Success)
             {
                 isValid = false;
             }
@@ -236,19 +213,13 @@ namespace RegistrationForm
             else
             {
                 isValid = true;
-
             }
-
-
 
             return isValid;
         }
 
-
-
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-
             if (NamewarningLabel.Visible ||
                 SurnamewarningLabel.Visible ||
                 PassWarningLabel.Visible ||
@@ -262,8 +233,6 @@ namespace RegistrationForm
 
             else
             {
-
-
                 if (GeneratedCodeLabel.Text == CodeBox.Text)
                 {
                     MessageBox.Show("Name: " + FullNameShow.Text + "\r\n"
@@ -281,8 +250,6 @@ namespace RegistrationForm
 
         }
 
-
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             NameBox.Text = "";
@@ -295,7 +262,6 @@ namespace RegistrationForm
             SSNBox.Text = "";
             EmailBox.Text = "";
             CodeBox.Text = "";
-
 
             NamewarningLabel.Hide();
             SurnamewarningLabel.Hide();

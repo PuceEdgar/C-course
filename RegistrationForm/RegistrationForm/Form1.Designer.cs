@@ -146,7 +146,6 @@
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(182, 22);
             this.NameBox.TabIndex = 9;
-            this.NameBox.Focus();
             this.NameBox.Leave += new System.EventHandler(this.NameBox_Leave);
             // 
             // SurnameBox
@@ -161,6 +160,7 @@
             // 
             this.PasswordBox.Location = new System.Drawing.Point(235, 126);
             this.PasswordBox.Name = "PasswordBox";
+            this.PasswordBox.PasswordChar = '*';
             this.PasswordBox.Size = new System.Drawing.Size(182, 22);
             this.PasswordBox.TabIndex = 11;
             this.PasswordBox.Leave += new System.EventHandler(this.PasswordBox_Leave);
@@ -169,6 +169,7 @@
             // 
             this.RepeatPasswordBox.Location = new System.Drawing.Point(235, 164);
             this.RepeatPasswordBox.Name = "RepeatPasswordBox";
+            this.RepeatPasswordBox.PasswordChar = '*';
             this.RepeatPasswordBox.Size = new System.Drawing.Size(182, 22);
             this.RepeatPasswordBox.TabIndex = 12;
             this.RepeatPasswordBox.Leave += new System.EventHandler(this.RepeatPasswordBox_Leave);
