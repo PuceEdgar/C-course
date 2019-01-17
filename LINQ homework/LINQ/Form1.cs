@@ -93,7 +93,7 @@ namespace LINQ
         private void IorEfilter_Click(object sender, EventArgs e)
         {
             var employeeList = GetEmployeeList();
-            SetDataIntoGrid(employeeList.Where(x => (x.Name.ToLower().Contains("e") || x.Name.ToLower().Contains("i")) && (x.Surname.ToLower().Contains("i") || x.Surname.ToLower().Contains("e"))).OrderByDescending(x => x.Surname).OrderByDescending(x => x.Name).ToList());
+            SetDataIntoGrid(employeeList.Where(x => (x.Name.ToLower().Contains("e") || x.Name.ToLower().Contains("i")) && (x.Surname.ToLower().Contains("i") || x.Surname.ToLower().Contains("e"))).OrderByDescending(x => x.Surname).ThenByDescending(x => x.Name).ToList());
         }
 
         private void LengthFilter_Click(object sender, EventArgs e)
